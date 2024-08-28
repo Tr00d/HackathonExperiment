@@ -1,3 +1,4 @@
+using HackathonExperiment.Api.Adapters;
 using Vonage.Extensions;
 
 var configuration = CloudRuntimeConfiguration.Load();
@@ -6,7 +7,8 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton(configuration);
-builder.Services.AddVonageClientScoped(builder.Configuration);
+builder.Services.AddVonageClientScoped(configuration.BuildConfiguration());
+builder.Services.AddScoped<IAiAdapter, FakeAiAdapter>();
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
