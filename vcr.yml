@@ -1,0 +1,13 @@
+project:
+  name: Hackathon Experiment
+instance:
+  name: dev
+  runtime: dotnet8.0
+  region: aws.euw1
+  entrypoint: [dotnet, HackathonExperiment.Api/publish/HackathonExperiment.Api.dll]
+  build-script: "./deploy.sh"
+  capabilities:
+    - voice
+debug:
+  name: debug
+  entrypoint: [dotnet, run, --project, HackathonExperiment.Api/HackathonExperiment.Api.csproj]

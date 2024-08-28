@@ -1,0 +1,1 @@
+dotnet publish -c release -o HackathonExperiment.Api/publish -r linux-x64
