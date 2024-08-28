@@ -1,3 +1,8 @@
+#region
+using ChatGPT.Net;
+using ChatGPT.Net.DTO.ChatGPT;
+#endregion
+
 namespace HackathonExperiment.Api.Adapters;
 
 public interface IAiAdapter
@@ -5,13 +10,16 @@ public interface IAiAdapter
     Task<string> AskAsync(string question);
 }
 
-internal class AiAdapter : IAiAdapter
+internal class AiAdapter(IConfiguration configuration) : IAiAdapter
 {
-    public Task<string> AskAsync(string question) => throw new NotImplementedException();
-}
-
-internal class FakeAiAdapter : IAiAdapter
-{
-    public Task<string> AskAsync(string question) => Task.FromResult(
-        "<speak>So, the T28 measures 97mm long. As far as I know, Ericsson sold approximately 10 millions units. Stacking them would be... <break time='1s'/> Please give me a moment <break time='1s'/> Around 970 kilometers. <emphasis level='strong'>It has to be Munich to Paris then!</emphasis></speak>");
+    public async Task<string> AskAsync(string question)
+    {
+        var client = new ChatGpt(
+            configuration["openai-key"] ?? throw new InvalidOperationException("Missing OpenAI key."),
+            new ChatGptOptions
+            {
+                Model = "gpt-4-turbo",
+            });
+        return await client.Ask(configuration["context"] + "\n" + question);
+    }
 }

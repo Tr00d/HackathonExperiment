@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton(configuration);
 builder.Services.AddVonageClientScoped(configuration.BuildConfiguration());
-builder.Services.AddScoped<IAiAdapter, FakeAiAdapter>();
+builder.Services.AddScoped<IAiAdapter, AiAdapter>();
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();

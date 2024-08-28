@@ -18,7 +18,7 @@ public class CallController(IVoiceClient client) : ControllerBase
         var fromEndpoint = new PhoneEndpoint {Number = "+447451260949"};
         var talkAction = new TalkAction
         {
-            Text = "<speak>Hey Guillaume? <break time='1s'/> How have you been? What can I do for you?</speak>", 
+            Text = "Thanks for thinking of me. So, what's the question about?", 
             Language = "en-GB", 
             Style = 6,
             Premium = true,
@@ -30,9 +30,9 @@ public class CallController(IVoiceClient client) : ControllerBase
             Dtmf = null,
             Speech = new SpeechSettings
             {
-                Language = "en-US",
-                MaxDuration = 10,
-                EndOnSilence = 3,
+                Language = "en-GB",
+                MaxDuration = 20,
+                EndOnSilence = 2,
             },
         };
         var ncco = new Ncco(talkAction, inputAction);
