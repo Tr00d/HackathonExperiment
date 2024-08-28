@@ -14,7 +14,6 @@ public class CallController(IVoiceClient client) : ControllerBase
     [HttpGet("CallMe")]
     public async Task<IActionResult> CallMe(string number)
     {
-        Console.WriteLine(number);
         var toEndpoint = new PhoneEndpoint {Number = "+" + number};
         var fromEndpoint = new PhoneEndpoint {Number = "+447451260949"};
         var talkAction = new TalkAction
