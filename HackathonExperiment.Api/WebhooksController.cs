@@ -1,7 +1,11 @@
 #region
+using System.Globalization;
 using HackathonExperiment.Api.Adapters;
 using Microsoft.AspNetCore.Mvc;
+using Vonage.Applications;
+using Vonage.Applications.Capabilities;
 using Vonage.Common.Monads;
+using Vonage.Request;
 using Vonage.Voice.EventWebhooks;
 using Vonage.Voice.Nccos;
 #endregion
@@ -35,6 +39,6 @@ public class WebhooksController(IAiAdapter aiAdapter) : ControllerBase
 
     private static Maybe<string> FetchQuestion(SpeechRecognitionResult[] results) =>
         results.Length != 0
-            ? results.OrderByDescending(result => decimal.Parse(result.Confidence)).First().Text
+            ? results.First().Text
             : Maybe<string>.None;
 }

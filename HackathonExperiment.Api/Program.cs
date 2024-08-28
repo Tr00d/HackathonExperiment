@@ -1,5 +1,7 @@
+#region
 using HackathonExperiment.Api.Adapters;
 using Vonage.Extensions;
+#endregion
 
 var configuration = CloudRuntimeConfiguration.Load();
 var builder = WebApplication.CreateBuilder(args);
