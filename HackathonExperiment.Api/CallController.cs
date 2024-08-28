@@ -18,7 +18,9 @@ public class CallController(IVoiceClient client) : ControllerBase
         var fromEndpoint = new PhoneEndpoint {Number = "+447451260949"};
         var talkAction = new TalkAction
         {
-            Text = "Hey Guillaume? How have you been? What can I do for you?", Language = "en-GB", Style = 6,
+            Text = "<speak>Hey Guillaume? <break time='1s'/> How have you been? What can I do for you?</speak>", 
+            Language = "en-GB", 
+            Style = 6,
             Premium = true,
         };
         var inputAction = new MultiInputAction

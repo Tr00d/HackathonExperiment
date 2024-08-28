@@ -13,5 +13,5 @@ internal class AiAdapter : IAiAdapter
 internal class FakeAiAdapter : IAiAdapter
 {
     public Task<string> AskAsync(string question) => Task.FromResult(
-        "So, the T28 measures 97mm long. As far as I know, Ericsson sold approximately 10 millions units. Stacking them would be... Please give me a second... Around 970 kilometers. It has to be Munich to Paris then!");
+        "<speak>So, the T28 measures 97mm long. As far as I know, Ericsson sold approximately 10 millions units. Stacking them would be... <break time='1s'/> Please give me a moment <break time='1s'/> Around 970 kilometers. <emphasis level='strong'>It has to be Munich to Paris then!</emphasis></speak>");
 }
