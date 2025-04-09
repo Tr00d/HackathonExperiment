@@ -11,11 +11,13 @@ namespace HackathonExperiment.Api;
 [Route("[controller]")]
 public class CallController(IVoiceClient client) : ControllerBase
 {
+    private const string VirtualNumber = "+447451260949";
+    
     [HttpGet("CallMe")]
     public async Task<IActionResult> CallMe(string number)
     {
         var toEndpoint = new PhoneEndpoint {Number = "+" + number};
-        var fromEndpoint = new PhoneEndpoint {Number = "+447451260949"};
+        var fromEndpoint = new PhoneEndpoint {Number = VirtualNumber};
         var talkAction = new TalkAction
         {
             Text = "Thanks for thinking of me. So, what's the question about?", 
