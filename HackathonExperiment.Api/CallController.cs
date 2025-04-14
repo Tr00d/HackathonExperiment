@@ -20,7 +20,7 @@ public class CallController(IVoiceClient client) : ControllerBase
         var fromEndpoint = new PhoneEndpoint {Number = VirtualNumber};
         var talkAction = new TalkAction
         {
-            Text = "Thanks for thinking of me. So, what's the question about?", 
+            Text = "Welcome to your Vonage Voice assistant. What's your question?", 
             Language = "en-GB", 
             Style = 6,
             Premium = true,
